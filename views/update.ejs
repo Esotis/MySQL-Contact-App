@@ -1,0 +1,147 @@
+<div class="container-fluid py-2">
+    <div class="row">
+
+        <!-- side nav -->
+        <div class="col-3 side-nav" style="height: 85vh;">
+            <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end border-2">
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link" href="/contact">All Contacts</a>
+                    <a class="nav-link" href="/contact/add">Add Contact</a>
+                    <a class="nav-link" href="/contact/update">Update Contact</a>
+                    <a class="nav-link" href="/search?method=name">Specific Contact</a>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link ms-3 my-1" href="/search?method=name">Search by name</a>
+                        <a class="nav-link ms-3 my-1" href="/search?method=orderby">Display Contact</a>
+                    </nav>
+                </nav>
+            </nav>
+
+        </div>
+
+        <!-- body -->
+
+        <div class="col-9">
+            <div class="row">
+                <div class="col-md p-2">
+                    <h2 class="text-success pb-2 border-bottom border-dark border-4">Update Contact</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 pb-2 mt-1 border-bottom border-3">
+                    <div class="form-floating">
+
+                        <select class="form-select" id="contactSelect" aria-label="Floating label select example">
+                            <option value='none' selected hidden disabled>Select one of these</option>
+                            <% contacts.forEach(contact=> { %>
+                                <option value="<%=contact.no %>">
+                                    <%= contact.contact_name %>
+                                </option>
+                                <% }) %>
+
+
+                        </select>
+
+                        <label for="floatingSelect">Choose Contact</label>
+
+                    </div>
+                </div>
+
+                <% if (error.length>0) { %>
+                    <div class="col-12 mt-3" id="alert">
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                                <% error.forEach(arr=> { %>
+                                    <li>
+                                        <%= arr.msg %>
+                                    </li>
+                                    <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                    <% } %>
+
+                        <div class="col-12 mt-3">
+                            <form class="row g-3" action="/update?_method=PUT" method="POST">
+                                <div class="col-md-6">
+                                    <label for="inputName" class="form-label">Contact Name :</label>
+                                    <input type="text" class="form-control" id="inputName" name="contact_name" value="<%-
+                                        data.contact_name==undefined ? '' : data.contact_name %>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputStatus" class="form-label">Status :</label>
+                                    <input type="text" class="form-control" id="inputStatus" name="status" value=<%-
+                                        data.status==undefined ? '' : data.status %> >
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputHome" class="form-label">Home :</label>
+                                    <input type="text" class="form-control" id="inputHome" name="home" value=<%-
+                                        data.home==undefined ? '' : data.home %> >
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputAge" class="form-label">Age :</label>
+                                    <input type="number" class="form-control" id="inputAge" name="age" min="1" value=<%-
+                                        data.age==undefined ? '' : data.age %> >
+                                </div>
+                                <div class="col-12">
+
+                                    <% switch (data.gender) { case 'Woman' : %>
+                                        <label for="inputGender" class="form-label">Gender :</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender" id="manGender"
+                                                value="Man">
+                                            <label class="form-check-label" for="manGender">
+                                                Man
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender" id="womanGender"
+                                                value="Woman" checked>
+                                            <label class="form-check-label" for="womanGender">
+                                                Woman
+                                            </label>
+                                        </div>
+                                        <% break; default : %>
+                                            <label for="inputGender" class="form-label">Gender :</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="gender"
+                                                    id="manGender" value="Man" checked>
+                                                <label class="form-check-label" for="manGender">
+                                                    Man
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="gender"
+                                                    id="womanGender" value="Woman">
+                                                <label class="form-check-label" for="womanGender">
+                                                    Woman
+                                                </label>
+                                            </div>
+                                            <% break; } %>
+
+
+                                </div>
+                                <div class="col-12">
+                                    <label for="inputDescription" class="form-label">Description :</label>
+                                    <div class="form-floating">
+                                        <textarea class="form-control" style="height: 100px; resize:none;"
+                                            placeholder="Write contact description..." id="inputDescription"
+                                            name="description"><%-
+                                    data.description==undefined ? '' : data.description %></textarea>
+
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <input type="hidden" id="inputId" name="id" value=<%- data.no==undefined ? '' :
+                                        data.no %> >
+                                    <input type="hidden" id="inputOldName" name="oldName" value=<%-
+                                        data.contact_name==undefined ? '' : data.contact_name %> >
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+
+            </div>
+        </div>
+    </div>
+</div>

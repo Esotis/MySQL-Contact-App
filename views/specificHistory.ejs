@@ -1,0 +1,79 @@
+<div class="container-fluid py-2">
+    <div class="row">
+
+        <!-- side nav -->
+        <div class="col-3 side-nav" style="height: 85vh;">
+            <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end border-2">
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link" href="/history">All History</a>
+                    <a class="nav-link" href="/history/specific">Specific History</a>
+                </nav>
+            </nav>
+
+        </div>
+
+        <!-- body -->
+
+        <div class="col-9">
+            <div class="row">
+                <div class="col-md p-2">
+                    <h2 class="text-success pb-2 border-bottom border-dark border-4">History Contact</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-10 mb-3">
+                    <label for="order-button" class="fw-bold">Order by :</label>
+                    <div class="dropdown d-inline p-2">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" id="order-button">
+                            Choose here
+                        </button>
+                        <ul class="dropdown-menu" id="dropdown-order">
+                            <li>
+                                <h6 class="dropdown-header text-danger">Time :</h6>
+                            </li>
+                            <li><a class="dropdown-item active" href="#" data-value="today">Today</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="yesterday">Yesterday</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="last week">Last Week</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="last month">Last Month</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="last year">Last Year</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-10 mb-2" style="align-items:center;" id="customTime">
+                    <label for="#" class="fw-bold">Custom Time :</label>
+                    <div class="datepicker-toggle">
+                        <span class="datepicker-toggle-button"></span>
+                        <input type="date" class="datepicker-input">
+                    </div>
+                    <input type="text" class="border-3 rounded-2 p-2" id="displayDate" placeholder="dd-mm-yyyy">
+
+                </div>
+                <div class="col-12">
+                    <table class="table caption-top">
+                        <caption class="fs-4 fw-bold text-capitalize" id="captionTime">Today</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider" id="body-history-table">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-12" id="error">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="/specificHistory.js"></script>

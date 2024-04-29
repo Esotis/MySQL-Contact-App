@@ -1,0 +1,76 @@
+<div class="container-fluid py-2">
+    <div class="row">
+
+        <!-- side nav -->
+        <div class="col-3 side-nav" style="height: 85vh;">
+            <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end border-2">
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link" href="/contact">All Contacts</a>
+                    <a class="nav-link" href="/contact/add">Add Contact</a>
+                    <a class="nav-link" href="/contact/update">Update Contact</a>
+                    <a class="nav-link" href="/search?method=name">Specific Contact</a>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link ms-3 my-1" href="/search?method=name">Search by name</a>
+                        <a class="nav-link ms-3 my-1" href="/search?method=orderby">Display Contact</a>
+                    </nav>
+                </nav>
+            </nav>
+
+        </div>
+
+
+        <!-- body of nav -->
+        <div class="col-9">
+            <div class="row">
+                <div class="col-md p-2">
+                    <h2 class="text-success pb-2 border-bottom border-dark border-4">Search Contact</h2>
+                </div>
+            </div>
+
+            <div class="row g-2 mb-3">
+                <div class="col-12 text-center">
+                    <h1 class="text-warning font-monospace fw-bold text-center">Search by name</h1>
+                </div>
+                <label for="inputEmail3" class="col-1 col-form-label">Name :</label>
+                <div class="col-10 text-center">
+                    <input type="text" id="searchInput" class="form-control" placeholder="name...">
+                </div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-primary text-center px-3" id="search-button"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg></button>
+                </div>
+            </div>
+
+            <!-- result of the search contact by name -->
+
+            <div class="row" id="contact">
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Contact</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer" style="justify-content: flex-start;">
+                ...
+            </div>
+        </div>
+    </div>
+</div>

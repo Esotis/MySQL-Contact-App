@@ -1,0 +1,71 @@
+<section class="email d-flex">
+
+    <div class="email-left w-50 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+
+            <div class="col-5">
+
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-6">
+                        <img src="https://www.freepnglogos.com/uploads/email-logo-png-21.png" alt="email-icon"
+                            class="img-fluid">
+                    </div>
+                </div>
+
+                <form action="/sendCode" method="post" onsubmit="return isValidForm()">
+
+                    <div class="header">
+                        <h1>Email Account</h1>
+                        <p>Enter your email account that has been registered to receive the code</p>
+                    </div>
+                    <div class="email-form">
+
+                        <div class="container-email">
+                            <input type="text"
+                                class="form-control  <%- typeof(error) == 'undefined' ? '' : error.errorClass %>"
+                                id="inputEmail" placeholder="Email address" data-validation="false" name="email">
+                            <div class="invalid-feedback" id="email-alert">
+                                <%- typeof(error)=='undefined' ? '' : error.message%>
+                            </div>
+                        </div>
+
+                        <div class="text-center container-submit">
+                            <button class="signin" id="email-button" type="submit">Submit Email</button>
+                            <span class="d-inline">Already have an account? <a href="/login"
+                                    class="sign-up d-inline">Sign
+                                    in
+                                    here</a></span>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="email-right w-50 h-100">
+        <div class="row align-items-center h-100 w-100 justify-content-center">
+            <div class="col-12 p-0">
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="3000">
+                            <img src="login-slide-1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="login-slide-2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="login-slide-3.jpg" class="d-block w-100" data-bs-interval="3000" alt=" ...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script src="/email.js"></script>

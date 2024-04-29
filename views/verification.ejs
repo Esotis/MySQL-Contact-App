@@ -1,0 +1,82 @@
+<section class="verification d-flex">
+
+    <div class="verification-left w-50 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+
+            <div class="col-5">
+
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-6">
+                        <img src="https://www.freepnglogos.com/uploads/email-logo-png-21.png" alt="email-icon"
+                            class="img-fluid">
+                    </div>
+                </div>
+
+                <form action="/verification" method="post" onsubmit="return isValidForm()">
+
+                    <div class="header">
+                        <h1>Verification Code</h1>
+                        <p>We have been sent verification code to <span class="fw-semibold text-primary">
+                                <%= email %>.
+                            </span>Check it!</p>
+                        <p>Didn't receive the code? <a href="#" class="resend-link">Resend here</a></p>
+                    </div>
+                    <div class="verification-form">
+
+                        <div class="container-verification">
+                            <input type="text"
+                                class="form-control <%- typeof(error) == 'undefined' ? '' : error.field === 'username' ? error.invalid : '' %>"
+                                id="inputVerification" placeholder="Verification code"
+                                data-validation="<%- typeof(error) == 'undefined' ? false : error.field == 'username' ? false : true %>"
+                                name="verificationCode"
+                                value="<%- typeof(error) == 'undefined' ? '' : error.input.username %>">
+                            <div class="invalid-feedback" id="verification-alert">
+                                Your verification code is wrong! Try again.
+                            </div>
+                        </div>
+
+                        <!-- <div class="error-message">
+                            Enter a valid email address!
+                            <%- typeof(error)=='undefined' ? '' : error.message%>
+                        </div> -->
+
+                        <div class="text-center container-submit">
+                            <button class="signin" id="verification-button" type="submit">Submit Code</button>
+                            <span class="d-inline">Already have an account? <a href="/login"
+                                    class="sign-up d-inline">Sign
+                                    in
+                                    here</a></span>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="verification-right w-50 h-100">
+        <div class="row align-items-center h-100 w-100 justify-content-center">
+            <div class="col-12 p-0">
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="3000">
+                            <img src="login-slide-1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="login-slide-2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="login-slide-3.jpg" class="d-block w-100" data-bs-interval="3000" alt=" ...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script src="/verification.js"></script>

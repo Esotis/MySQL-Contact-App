@@ -1,0 +1,171 @@
+<section class="register d-flex">
+
+    <div class="register-left w-50 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-6">
+
+                <form action="/register/signup" method="post" onsubmit="return isValidForm()">
+
+                    <div class="header">
+                        <h1>Hello there</h1>
+                        <p>Want to try out the app? Fill out this form to register</p>
+                    </div>
+                    <div class="register-form">
+
+                        <input type="hidden" id="usernameTaken"
+                            value="<%- typeof(error) == 'undefined' ? '' : error.field === 'username' ? error.duplicateUsername : '' %>">
+
+                        <div class="container-username">
+                            <label for="inputUsername" class="form-label">Username</label>
+                            <input type="text"
+                                class="form-control <%- typeof(error) == 'undefined' ? '' : error.field === 'username' ? error.invalid : '' %>"
+                                id="inputUsername" placeholder="Enter your username"
+                                data-validation="<%- typeof(error) == 'undefined' ? false : error.field == 'username' ? false : true %>"
+                                name="username" value="<%- typeof(error) == 'undefined' ? '' : error.input.username %>">
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback" id="username-alert">
+                                Username has already been taken!
+                            </div>
+                        </div>
+
+                        <div class="container-email">
+                            <label for="inputEmail" class="form-label">Email</label>
+                            <input type="email"
+                                class="form-control <%- typeof(error) == 'undefined' ? '' : error.field === 'email' ? error.invalid : '' %>"
+                                id="inputEmail" placeholder="Enter your email"
+                                data-validation="<%- typeof(error) == 'undefined' ? false : error.field == 'email' ? false : true %>"
+                                name="email" value="<%- typeof(error) == 'undefined' ? '' : error.input.email %>">
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div id="email-alert" class="invalid-feedback">
+                                <%- typeof(error)=='undefined' ? '' : error.field==='email' ? error.message : '' %>
+                            </div>
+                        </div>
+
+                        <div class="container-password">
+                            <label for="inputPassword" class="form-label">Password</label>
+                            <div class="input-group" id="password-box">
+                                <input type="password" class="form-control" id="inputPassword"
+                                    placeholder="Enter your password"
+                                    data-validation="<%- typeof(error) == 'undefined' ? false : true %>" name="password"
+                                    value="<%- typeof(error) == 'undefined' ? '' : error.input.password %>">
+                                <span class="input-group-text icon-eye" id="icon-eye-password" data-icon="slash"
+                                    data-input="password"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z" />
+                                        <path
+                                            d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z" />
+                                    </svg></span>
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                Password must containt 1 Uppercase, 1 Symbol, 1 Number, and min-length = 5 characters!
+                            </div>
+                        </div>
+
+                        <div class="container-password">
+                            <label for="inputConfirmation" class="form-label">Confirmation Password</label>
+                            <div class="input-group" id="confirmation-box">
+                                <input type="password" class="form-control" id="inputConfirmation"
+                                    placeholder="Confirm your password"
+                                    data-validation="<%- typeof(error) == 'undefined' ? false : true %>"
+                                    name="confirmationPassword"
+                                    value="<%- typeof(error) == 'undefined' ? '' : error.input.confirmationPassword %>">
+                                <span class="input-group-text icon-eye" id="icon-eye-confirmation" data-icon="slash"
+                                    data-input="confirmation"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                        height="16" fill="currentColor" class="bi bi-eye-slash-fill"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z" />
+                                        <path
+                                            d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z" />
+                                    </svg></span>
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                Password does not match!
+                            </div>
+                        </div>
+
+                        <div class="container-age">
+                            <label for="inputAge" class="form-label">Age</label>
+                            <input type="number" min="1" max="100" class="form-control" id="inputAge"
+                                placeholder="Enter your age"
+                                data-validation="<%- typeof(error) == 'undefined' ? false : true %>" name="age"
+                                value="<%- typeof(error) == 'undefined' ? '' : error.input.age %>">
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                Due to policy, only 17+ can register!
+                            </div>
+                        </div>
+
+                        <label for="inputPhone" class="form-label">Phone Number</label>
+                        <div class="input-group" id="phone-box">
+                            <span class="input-group-text label-phone" id="labelPhone">+62</span>
+                            <input type="number" class="form-control" id="inputPhone"
+                                placeholder="Enter your phone number"
+                                data-validation="<%- typeof(error) == 'undefined' ? false : true %>" name="phoneNumber"
+                                value="<%- typeof(error) == 'undefined' ? '' : error.input.phoneNumber %>">
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                Please enter a valid phone number
+                            </div>
+                        </div>
+
+                        <div class="error-message <%- typeof(sessionEnd)=='undefined' ? '' : sessionEnd.sessionClass%>">
+                            <%- typeof(sessionEnd)=='undefined' ? '' : sessionEnd.message%>
+                        </div>
+
+                        <div class="text-center container-submit">
+                            <button class="signin" id="register-button">Register</button>
+                            <span class="d-inline">Already have an account? <a href="/login"
+                                    class="sign-up d-inline">Sign
+                                    in
+                                    here</a></span>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="register-right w-50 h-100">
+        <div class="row align-items-center h-100 w-100 justify-content-center">
+            <div class="col-12 p-0">
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="3000">
+                            <img src="login-slide-1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="login-slide-2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="login-slide-3.jpg" class="d-block w-100" data-bs-interval="3000" alt=" ...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script src="/register.js"></script>

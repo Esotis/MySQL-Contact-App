@@ -1,0 +1,121 @@
+<div class="container-fluid py-2">
+    <div class="row">
+
+        <!-- side nav -->
+        <div class="col-3 side-nav" style="height: 85vh;">
+            <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end border-2">
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link" href="/contact">All Contacts</a>
+                    <a class="nav-link" href="/contact/add">Add Contact</a>
+                    <a class="nav-link" href="/contact/update">Update Contact</a>
+                    <a class="nav-link" href="/search?method=name">Specific Contact</a>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link ms-3 my-1" href="/search?method=name">Search by name</a>
+                        <a class="nav-link ms-3 my-1" href="/search?method=orderby">Display Contact</a>
+                    </nav>
+                </nav>
+            </nav>
+
+        </div>
+
+
+        <!-- body of nav -->
+        <div class="col-9" id="contact">
+            <div class="row">
+                <div class="col-md p-2">
+                    <h2 class="text-success pb-2 border-bottom border-dark border-4">Recent Contact</h2>
+                </div>
+            </div>
+
+            <% if (allContact.length < 1) { %>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="alert alert-danger" role="alert">
+                            No Contact added!
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+
+                        <% allContact.forEach(contact=> { %>
+
+                            <div class="col">
+                                <div class="card text-bg-warning h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title border-bottom border-3 border-danger pb-2">
+                                            <%= contact.contact_name %>
+                                                (<%=contact.status%>)
+                                        </h5>
+                                        <p class="card-text">
+                                            <%= contact.description %>
+                                        </p>
+                                        <span class="fw-bold">
+                                            <%= contact.home %>
+                                        </span>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-success border-top border-3">
+                                        <button type="button" id="see-detail" class="btn btn-primary mb-2"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal" data-id=<%=contact.no
+                                            %> >See Detail</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <% }) %>
+                    </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- side-message -->
+
+<div class="d-flex align-content-end flex-wrap ps-1">
+    <div class="border-start border-4 border-danger p-2 side-message bg-warning" id="<%= side%>">
+        <%= status %>
+    </div>
+</div>
+
+
+
+
+<!-- modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Contact</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer" style="justify-content: flex-start;">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- toast -->
+
+<% if (actionContact) { %>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto <%= actionContact.textClass %>">
+                    <%= actionContact.action %>
+                </strong>
+                <small>a while ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <%= actionContact.text %>
+            </div>
+        </div>
+    </div>
+
+    <% } %>

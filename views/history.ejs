@@ -1,0 +1,47 @@
+<div class="container-fluid py-2">
+    <div class="row">
+
+        <!-- side nav -->
+        <div class="col-3 side-nav" style="height: 85vh;">
+            <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end border-2">
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link" href="/history">All History</a>
+                    <a class="nav-link" href="/history/specific">Specific History</a>
+                </nav>
+            </nav>
+
+        </div>
+
+        <!-- body -->
+
+        <div class="col-9">
+            <div class="row">
+                <div class="col-md p-2">
+                    <h2 class="text-success pb-2 border-bottom border-dark border-4">History Contact</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <table class="table caption-top">
+                        <caption class="fs-4 fw-bold">Recent History</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider" id="body-history-table">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="/history.js"></script>

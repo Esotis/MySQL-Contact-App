@@ -1,0 +1,90 @@
+<div class="container-fluid py-2">
+    <div class="row">
+
+        <!-- side nav -->
+        <div class="col-3 side-nav" style="height: 85vh;">
+            <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end border-2">
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link" href="/contact">All Contacts</a>
+                    <a class="nav-link" href="/contact/add">Add Contact</a>
+                    <a class="nav-link" href="/contact/update">Update Contact</a>
+                    <a class="nav-link" href="/search?method=name">Specific Contact</a>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link ms-3 my-1" href="/search?method=name">Search by name</a>
+                        <a class="nav-link ms-3 my-1" href="/search?method=orderby">Display Contact</a>
+                    </nav>
+                </nav>
+            </nav>
+
+        </div>
+
+
+        <!-- body of nav -->
+        <div class="col-9" id="contact">
+            <div class="row">
+                <div class="col-md p-2">
+                    <h2 class="text-success pb-2 border-bottom border-dark border-4">Display Contact</h2>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <p class="fw-semibold fst-italic text-capitalize">Ordered by : <span id="displayOrder"
+                            class="fw-semibold fst-italic text-capitalize text-danger"></span></p>
+                    <p class="fw-semibold fst-italic text-capitalize">summarized : <span id="displaySummarize"
+                            class="fw-semibold fst-italic text-capitalize text-danger"></span></p>
+                </div>
+
+                <label for="inputOrder" class="col-1 col-form-label fw-semibold fst-italic">Display :</label>
+
+                <div class="col-4">
+                    <select class="form-select d-inline-block" id="inputOrder">
+                        <option value="contact_name">Name</option>
+                        <option value="age">Age</option>
+                        <option value="status">Status</option>
+                        <option value="gender">Gender</option>
+                        <option value="home">Home</option>
+                    </select>
+                </div>
+
+                <div class="col-2 ps-0" id="caret">
+                    <button type="button" class="btn btn-dark" data-caret="ASC" id="button-caret"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                        </svg></button>
+                </div>
+
+            </div>
+
+            <div class="row" id="resultDisplay">
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!-- modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Contact</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer" style="justify-content: flex-start;">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/orderContact.js"></script>
