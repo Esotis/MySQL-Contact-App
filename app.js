@@ -22,10 +22,10 @@ require('dotenv').config({
 
 //config of gmail api - google
 
-const CLIENT_ID = '782887643100-tijvq37pcmr4gnou0ldlvfr8isq6fvll.apps.googleusercontent.com'
-const CLIENT_SECRET = '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'
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground'
-const REFRESH_TOKEN = '1//04TYs-Jtw6IocCgYIARAAGAQSNwF-L9Ir-3GZ48ifj8CS53rQAkia9dXf-K2NUgPe1eyVDzY7brBSgTH68TOFajOflWFh9pcGfpk'
+const CLIENT_ID = 'YOUR CLIENT_ID GOOGLE API'
+const CLIENT_SECRET = 'YOUR CLIENT_SECRET GOOGLE GMAIL API'
+const REDIRECT_URI = 'LINK TO GOOGLE DEVELOPER GMAIL'
+const REFRESH_TOKEN = 'YOUR REFRESH TOKEN'
 
 // using oAuth2Client to connect in google developer oAuth for authorization and getting access token
 
@@ -36,8 +36,8 @@ oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN })
 var pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
-    password: 'jovan2004',
-    database: 'contact_app',
+    password: 'YOUR PASSWORD DATABASE',
+    database: 'YOUR DATABASE NAME',
     insecureAuth: true,
 });
 
@@ -764,7 +764,7 @@ app.post('/register/signup', async function (req, res) {
         },
         auth: {
             type: 'OAuth2',
-            user: 'jovananggata15@gmail.com',
+            user: 'YOUR OWN GMAIL',
             clientId: CLIENT_ID,
             clientSecret: CLIENT_SECRET,
             refreshToken: REFRESH_TOKEN,
@@ -774,8 +774,8 @@ app.post('/register/signup', async function (req, res) {
 
     const registrationCode = crypto.randomBytes(8).toString('base64')
     const mailOptions = {
-        from: 'SQLCONTACTAPP 💌 <jovananggata15@gmail.com>',
-        to: 'jovananggata1@gmail.com',
+        from: 'SQLCONTACTAPP 💌 <YOUR OWN GMAIL>',
+        to: 'DESTINATED GMAIL',
         subject: 'This is your registration code',
         text: `Your registration code is ${registrationCode}`,
         html: `<p>Your registration code is <strong>${registrationCode}</strong></p>`
@@ -868,7 +868,7 @@ app.post('/sendCode', async function (req, res) {
         },
         auth: {
             type: 'OAuth2',
-            user: 'jovananggata15@gmail.com',
+            user: 'YOUR OWN GMAIL',
             clientId: CLIENT_ID,
             clientSecret: CLIENT_SECRET,
             refreshToken: REFRESH_TOKEN,
@@ -878,8 +878,8 @@ app.post('/sendCode', async function (req, res) {
 
     const registrationCode = crypto.randomBytes(8).toString('base64')
     const mailOptions = {
-        from: 'SQLCONTACTAPP 💌 <jovananggata15@gmail.com>',
-        to: 'jovananggata1@gmail.com',
+        from: 'SQLCONTACTAPP 💌 <YOUR OWN GMAIL>',
+        to: 'DESTINATED GMAIL',
         subject: 'This is your registration code',
         text: `Your registration code is ${registrationCode}`,
         html: `<p>Your registration code is <strong>${registrationCode}</strong></p>`
